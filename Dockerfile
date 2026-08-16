@@ -22,6 +22,11 @@ RUN cd /tmp && \
     ls -al && \
     echo "eula=true" > /tmp/minecraft/eula.txt
 
+
+RUN cd /tmp/minecraft/mods && \
+    rm cells-0.6.7-beta.jar && \
+	wget --timeout=60 --quiet -c https://edge.forgecdn.net/files/8634/93/cells-0.6.7-beta2.jar -O cells-0.6.7-beta2.jar
+
 RUN cd /tmp/minecraft && \
     sed -i "s/USE_CLEANROOM=false/USE_CLEANROOM=true/g" settings.cfg && \
     cat settings.cfg && \
